@@ -36,6 +36,11 @@ public class HelloController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "getMessage")
+	public @ResponseBody String getMessage(){
+		return "{\"name\" : \"tom\"}";
+	}
+	
 	
 
 }
