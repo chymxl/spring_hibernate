@@ -17,9 +17,10 @@ public class HelloController {
 	@Autowired
 	private IUserService userService;
 	
-	@RequestMapping(value = "/hello")
+	@RequestMapping(value = "/login")
 	@ResponseBody
-	public String sayHello(HttpServletRequest req, @RequestParam String name){
+	public String sayHello(HttpServletRequest req, @RequestParam String name,
+			@RequestParam String password){
 		userService.saveUser(new User(name));
 		return "Hello World";
 	}
