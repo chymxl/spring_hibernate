@@ -19,4 +19,10 @@ public class UserServiceImpl implements IUserService{
 		userDao.saveUser(user);
 	}
 
+	@Override
+	public void validateUser(User user) throws Exception {
+		userDao.validateUser(user);
+		
+	}
+
 }

@@ -6,4 +6,6 @@ public interface IUserService {
 
 	void saveUser(User user);
 	
+	void validateUser(User user) throws Exception;
+	
 }

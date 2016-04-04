@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -20,10 +21,18 @@ public class User {
 	@Column(name = "user_name", length = 20)
 	private String name;
 	
+	@Column(name = "user_password", length = 32)
+	private String password;
+	
 	public User() {}
 	
 	public User(String name){
 		this.name = name;
+	}
+	
+	public User(String name, String password){
+		this.name = name;
+		this.setPassword(password);
 	}
 
 	public String getId() {
@@ -40,6 +49,15 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		if(password != null)
+			this.password = DigestUtils.md5Hex(password);
 	}
 	
 }
